@@ -24,6 +24,18 @@ public class CvsParserTests
         ParseResultShouldBe(new[] { "ABC" }, data);
     }
 
+    [Test]
+    public void parse_two_word()
+    {
+        var data = "\"ABC\",\"DEF\"";
+        var expected = new[]
+        {
+            "ABC",
+            "DEF"
+        };
+        ParseResultShouldBe(expected, data);
+    }
+
     private void ParseResultShouldBe(IEnumerable<string> expected, string data)
     {
         CollectionAssert.AreEqual(expected, _parser.Parse(data));

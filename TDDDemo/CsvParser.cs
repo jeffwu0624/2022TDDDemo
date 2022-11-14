@@ -4,11 +4,18 @@ public class CsvParser
 {
     public IEnumerable<string> Parse(string value)
     {
-        if (string.IsNullOrWhiteSpace(value)) return new List<string>().ToArray();
+        var result = new List<string>();
 
-        var startIdx = value.IndexOf("\"", StringComparison.CurrentCultureIgnoreCase);
-        var endInx = value.IndexOf("\"", startIdx + 1, StringComparison.CurrentCultureIgnoreCase);
+        if (string.IsNullOrWhiteSpace(value)) return result;
 
-        return new[] { value.Substring(startIdx + 1, endInx - 1) };
+        foreach (var data in value.Split(","))
+        {
+            var startIdx = data.IndexOf("\"", StringComparison.CurrentCultureIgnoreCase);
+            var endInx = data.IndexOf("\"", startIdx + 1, StringComparison.CurrentCultureIgnoreCase);
+
+            result.Add(data.Substring(startIdx + 1, endInx - 1));
+        }
+
+        return result;
     }
 }
