@@ -21,10 +21,10 @@ public class CvsParserTests
     public void parse_one_word()
     {
         var data = "\"ABC\"";
-        DataShouldBe(new[] { "ABC" }, data);
+        ParseResultShouldBe(new[] { "ABC" }, data);
     }
 
-    private void DataShouldBe(IEnumerable<string> expected, string data)
+    private void ParseResultShouldBe(IEnumerable<string> expected, string data)
     {
         CollectionAssert.AreEqual(expected, _parser.Parse(data));
     }
