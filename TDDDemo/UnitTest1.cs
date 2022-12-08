@@ -36,6 +36,19 @@ public class CvsParserTests
         ParseResultShouldBe(expected, data);
     }
 
+    [Test]
+    public void parse_with_common()
+    {
+        var data = "\"ABC\",\"DEF,GHI\"";
+        var expected = new[]
+        {
+            "ABC",
+            "DEF,GHI"
+        };
+        ParseResultShouldBe(expected, data);
+    }
+
+
     private void ParseResultShouldBe(IEnumerable<string> expected, string data)
     {
         CollectionAssert.AreEqual(expected, _parser.Parse(data));

@@ -8,12 +8,15 @@ public class CsvParser
 
         if (string.IsNullOrWhiteSpace(value)) return result;
 
-        foreach (var data in value.Split(","))
+        while (!string.IsNullOrEmpty(value))
         {
-            var startIdx = data.IndexOf("\"", StringComparison.CurrentCultureIgnoreCase);
-            var endInx = data.IndexOf("\"", startIdx + 1, StringComparison.CurrentCultureIgnoreCase);
+            var startIdx = value.IndexOf("\"", StringComparison.CurrentCultureIgnoreCase);
+            var endInx = value.IndexOf("\"", startIdx + 1, StringComparison.CurrentCultureIgnoreCase);
+            result.Add(value.Substring(startIdx + 1, endInx - 1));
 
-            result.Add(data.Substring(startIdx + 1, endInx - 1));
+            if (value.Length < endInx + 2) break;
+
+            value = value.Substring(endInx + 2);
         }
 
         return result;
