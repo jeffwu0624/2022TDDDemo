@@ -8,9 +8,14 @@ public class FizzBuzz
 
         foreach (var i in Enumerable.Range(1, value))
         {
-            if (i % 15 == 0)
+            var wordsLookup = new Dictionary<int, string>
             {
-                words.Add("fizzbuzz");
+                { 15, "fizzbuzz" }
+            };
+
+            if (wordsLookup.ContainsKey(i))
+            {
+                words.Add(wordsLookup[i]);
             }
             else if (i % 3 == 0)
             {
