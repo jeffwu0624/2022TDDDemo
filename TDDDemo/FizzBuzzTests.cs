@@ -3,13 +3,24 @@ namespace TDDDemo;
 [TestFixture]
 public class FizzBuzzTests
 {
+    [SetUp]
+    public void SetUp()
+    {
+        _fizzBuzz = new FizzBuzz();
+    }
+
+    private FizzBuzz _fizzBuzz;
+
     [Test]
     public void input_one()
     {
-        var fizzBuzz = new FizzBuzz();
+        FizzBuzzShouldBe(1, "1");
+    }
 
-        var result = fizzBuzz.Create(1);
+    private void FizzBuzzShouldBe(int value, string expected)
+    {
+        var result = _fizzBuzz.Create(value);
 
-        Assert.AreEqual("1", result);
+        Assert.AreEqual(expected, result);
     }
 }
