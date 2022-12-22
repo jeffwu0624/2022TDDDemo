@@ -8,22 +8,18 @@ public class FizzBuzz
 
         foreach (var i in Enumerable.Range(1, value))
         {
-            var wordsLookup = new Dictionary<int, string>
+            var divNumberLookup = new Dictionary<int, string>
             {
-                { 15, "fizzbuzz" }
+                { 15, "fizzbuzz" },
+                { 3, "fizz" },
+                { 5, "buzz" }
             };
 
-            if (wordsLookup.ContainsKey(i))
+            var divWord = divNumberLookup.FirstOrDefault(pair => i % pair.Key == 0).Value;
+
+            if (!string.IsNullOrEmpty(divWord))
             {
-                words.Add(wordsLookup[i]);
-            }
-            else if (i % 3 == 0)
-            {
-                words.Add("fizz");
-            }
-            else if (i % 5 == 0)
-            {
-                words.Add("buzz");
+                words.Add(divWord);
             }
             else
             {
