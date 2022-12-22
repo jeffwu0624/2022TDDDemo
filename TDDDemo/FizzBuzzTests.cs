@@ -23,6 +23,13 @@ public class FizzBuzzTests
         FizzBuzzShouldBe(2, "1,2");
     }
 
+    [Test]
+    public void input_three()
+    {
+        FizzBuzzShouldBe(3, "1,2,fizz");
+    }
+
+
     private void FizzBuzzShouldBe(int value, string expected)
     {
         var result = _fizzBuzz.Create(value);
