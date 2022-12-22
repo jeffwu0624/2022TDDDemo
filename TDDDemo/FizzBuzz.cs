@@ -2,30 +2,22 @@ namespace TDDDemo;
 
 public class FizzBuzz
 {
+    private readonly List<DivWord> _divWords = new()
+    {
+        new(15, "fizzbuzz"),
+        new(3, "fizz"),
+        new(5, "buzz")
+    };
+
     public string Create(int value)
     {
         var words = new List<string>();
 
-        var divWords = new List<DivWord>
-        {
-            new(15, "fizzbuzz"),
-            new(3, "fizz"),
-            new(5, "buzz")
-        };
-
-
         foreach (var i in Enumerable.Range(1, value))
         {
-            var word = divWords.FirstOrDefault(div => i % div.Value == 0);
+            var word = _divWords.FirstOrDefault(div => i % div.Value == 0);
 
-            if (word != null)
-            {
-                words.Add(word.Word);
-            }
-            else
-            {
-                words.Add(i.ToString());
-            }
+            words.Add(word != null ? word.Word : i.ToString());
         }
 
 
