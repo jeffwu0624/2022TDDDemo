@@ -29,6 +29,12 @@ public class FizzBuzzTests
         FizzBuzzShouldBe(3, "1,2,fizz");
     }
 
+    [Test]
+    public void input_five()
+    {
+        FizzBuzzShouldBe(5, "1,2,fizz,4,buzz");
+    }
+
 
     private void FizzBuzzShouldBe(int value, string expected)
     {

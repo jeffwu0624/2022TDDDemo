@@ -12,6 +12,10 @@ public class FizzBuzz
             {
                 words.Add("fizz");
             }
+            else if (i % 5 == 0)
+            {
+                words.Add("buzz");
+            }
             else
             {
                 words.Add(i.ToString());
