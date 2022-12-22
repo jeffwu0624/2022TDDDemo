@@ -6,20 +6,21 @@ public class FizzBuzz
     {
         var words = new List<string>();
 
+        var divWords = new List<DivWord>
+        {
+            new(15, "fizzbuzz"),
+            new(3, "fizz"),
+            new(5, "buzz")
+        };
+
+
         foreach (var i in Enumerable.Range(1, value))
         {
-            var divNumberLookup = new Dictionary<int, string>
-            {
-                { 15, "fizzbuzz" },
-                { 3, "fizz" },
-                { 5, "buzz" }
-            };
+            var word = divWords.FirstOrDefault(div => i % div.Value == 0);
 
-            var divWord = divNumberLookup.FirstOrDefault(pair => i % pair.Key == 0).Value;
-
-            if (!string.IsNullOrEmpty(divWord))
+            if (word != null)
             {
-                words.Add(divWord);
+                words.Add(word.Word);
             }
             else
             {
@@ -30,4 +31,16 @@ public class FizzBuzz
 
         return string.Join(",", words);
     }
+}
+
+public class DivWord
+{
+    public DivWord(int value, string word)
+    {
+        Value = value;
+        Word = word;
+    }
+
+    public int Value { get; }
+    public string Word { get; }
 }
