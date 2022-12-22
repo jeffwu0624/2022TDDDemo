@@ -17,6 +17,12 @@ public class FizzBuzzTests
         FizzBuzzShouldBe(1, "1");
     }
 
+    [Test]
+    public void input_two()
+    {
+        FizzBuzzShouldBe(2, "1,2");
+    }
+
     private void FizzBuzzShouldBe(int value, string expected)
     {
         var result = _fizzBuzz.Create(value);
